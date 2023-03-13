@@ -2,7 +2,8 @@ AllCops:
   DisplayCopNames:    true
   DisplayStyleGuide:  true
   StyleGuideCopsOnly: true
-  TargetRubyVersion:  2.4
+  TargetRubyVersion:  3.2
+  NewCops: enable
 
 Metrics/LineLength:
   Max: 120

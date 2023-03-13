@@ -1,11 +1,15 @@
 describe ApiStruct::Client do
   extend Support::Stub
+
+  # rubocop:disable Lint/ConstantDefinitionInBlock
   API_ROOT = 'https://jsonplaceholder.typicode.com'
+  # rubocop:enable Lint/ConstantDefinitionInBlock
 
   let(:api_root) { API_ROOT }
   stub_api(API_ROOT)
   let(:client) { StubClient.new }
 
+  # rubocop:disable Lint/ConstantDefinitionInBlock
   class StubClient < ApiStruct::Client
     stub_api :posts
 
@@ -17,46 +21,47 @@ describe ApiStruct::Client do
       patch(id, json: params)
     end
   end
+  # rubocop:enable Lint/ConstantDefinitionInBlock
 
   context 'build url options' do
     context 'url options' do
       it ' should replace /posts/users/:id to /posts/users if URL option didnt provided' do
         url = client.send(:build_url, 'users/:id', {})
-        expect(url).to eq api_root + '/posts/users'
+        expect(url).to eq "#{api_root}/posts/users"
       end
 
       it ' should replace users/:id/comments to users/comments if URL option didnt provided' do
         url = client.send(:build_url, 'users/:id/comments', {})
-        expect(url).to eq api_root + '/posts/users/comments'
+        expect(url).to eq "#{api_root}/posts/users/comments"
       end
 
       it 'should replace /users/:id in prefix to /users/1' do
         url = client.send(:build_url, [], prefix: 'users/:id', id: 1)
-        expect(url).to eq api_root + '/users/1/posts'
+        expect(url).to eq "#{api_root}/users/1/posts"
       end
 
       it 'should replace /users/:user_id/posts/:id in prefix to /users/1/posts/12' do
         url = client.send(:build_url, ':id', prefix: 'users/:user_id', user_id: 1, id: 12)
-        expect(url).to eq api_root + '/users/1/posts/12'
+        expect(url).to eq "#{api_root}/users/1/posts/12"
       end
 
       it 'should replace /users/:id to /users/1' do
         url = client.send(:build_url, 'users/:id', id: 1)
-        expect(url).to eq api_root + '/posts/users/1'
+        expect(url).to eq "#{api_root}/posts/users/1"
       end
 
       it 'user_posts without post_id' do
         user_id = 1
         post_id = nil
         url = client.send(:build_url, post_id, prefix: [:users, user_id])
-        expect(url).to eq api_root + '/users/1/posts'
+        expect(url).to eq "#{api_root}/users/1/posts"
       end
 
       it 'user_posts with post_id' do
         user_id = 1
         post_id = 2
         url = client.send(:build_url, post_id, prefix: [:users, user_id])
-        expect(url).to eq api_root + '/users/1/posts/2'
+        expect(url).to eq "#{api_root}/users/1/posts/2"
       end
     end
 
@@ -134,7 +139,7 @@ describe ApiStruct::Client do
         expect(response).to be_failure
         expect(response.failure.status).to eq(404)
         expect(body).to be_kind_of(String)
-        expect(body).to match(/<body>.+<\/body>/)
+        expect(body).to match(%r{<body>.+</body>})
       end
     end
   end

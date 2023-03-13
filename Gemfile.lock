@@ -110,6 +110,7 @@ PLATFORMS
 DEPENDENCIES
   api_struct!
   bundler
+  byebug
   ffaker
   pry-byebug
   rake (~> 13.0)
