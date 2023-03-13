@@ -1,5 +1,5 @@
 require 'http'
-require 'dry/monads/result'
+require 'dry-monads'
 require 'dry-configurable'
 require 'dry/inflector'
 require 'json'

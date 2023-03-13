@@ -12,3 +12,6 @@
 vendor/bundle
 .idea/
 .byebug_history
+
+.ruby-version
+project_files

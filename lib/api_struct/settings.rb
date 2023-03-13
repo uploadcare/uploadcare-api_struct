@@ -2,6 +2,6 @@ module ApiStruct
   class Settings
     extend ::Dry::Configurable
 
-    setting :endpoints, {}
+    setting :endpoints, default: {}
   end
 end
