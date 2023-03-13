@@ -1,10 +1,10 @@
-# <img src='https://github.com/rubygarage/api_struct/blob/master/api_struct.svg' height='60' alt='ApiStruct' />
+# <img src='https://github.com/uploadcare/uploadcare-api_struct/blob/master/api_struct.svg' height='60' alt='ApiStruct' />
 
 **ApiStruct** consists of two main interfaces: `ApiStruct::Client` and `ApiStruct::Entity`. The `ApiStruct::Client` class is aimed at using the same interface for describing requests to different APIs. The `ApiStruct::Entity` enables you to use *ApiStruct* clients in ORM-like style.
 
 [![Gem Version](https://badge.fury.io/rb/api_struct.svg)](https://badge.fury.io/rb/api_struct)
 ![Maintainability](https://api.codeclimate.com/v1/badges/dc07c83ccbcaaebc6c44/maintainability)
-[![CircleCI](https://circleci.com/gh/rubygarage/api_struct/tree/master.svg?style=svg)](https://circleci.com/gh/rubygarage/api_struct/tree/master)
+[![CircleCI](https://circleci.com/gh/uploadcare/uploadcare-api_struct/tree/master.svg?style=svg)](https://circleci.com/gh/uploadcare/uploadcare-api_struct/tree/master)
 
 ## Installation
 
@@ -200,12 +200,9 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/rubygarage/api_struct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/uploadcare/uploadcare-api_struct.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 ***
-<a href="https://rubygarage.org/"><img src="https://rubygarage.s3.amazonaws.com/assets/assets/rg_color_logo_horizontal-919afc51a81d2e40cb6a0b43ee832e3fcd49669d06785156d2d16fd0d799f89e.png" alt="RubyGarage Logo" width="415" height="128"></a>
-
-RubyGarage is a leading software development and consulting company in Eastern Europe. Our main expertise includes Ruby and Ruby on Rails, but we successfully employ other technologies to deliver the best results to our clients. [Check out our portfolio](https://rubygarage.org/portfolio) for even more exciting works!

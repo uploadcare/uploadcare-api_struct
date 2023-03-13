@@ -49,7 +49,7 @@ module ApiStruct
     def success(response)
       body = response.body.to_s
       result = !body.empty? ? JSON.parse(body, symbolize_names: true) : nil
-      Dry::Monads::Result::Success.new(result)
+      Dry::Monads::Result::Success.(result)
     end
 
     def failure(response)
