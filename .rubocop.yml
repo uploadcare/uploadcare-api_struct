@@ -2,7 +2,7 @@ AllCops:
   DisplayCopNames:    true
   DisplayStyleGuide:  true
   StyleGuideCopsOnly: true
-  TargetRubyVersion:  3.2
+  TargetRubyVersion:  2.7
   NewCops: enable
 
 Metrics/LineLength:
