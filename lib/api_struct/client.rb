@@ -9,7 +9,7 @@ module ApiStruct
     attr_reader :client
 
     # rubocop:disable Style/MissingRespondToMissing
-    def self.method_missing(method_name, *args, &)
+    def self.method_missing(method_name, *args, &block)
       endpoints = Settings.config.endpoints
       return super unless endpoints.keys.include?(method_name)
 

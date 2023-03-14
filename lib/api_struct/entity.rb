@@ -8,11 +8,11 @@ module ApiStruct
         @entity_attributes ||= []
       end
 
-      def attr_entity(*attrs, &)
+      def attr_entity(*attrs, &block)
         entity_attributes.concat attrs
 
         attrs.each do |attr|
-          define_entity_attribute_getter(attr, &)
+          define_entity_attribute_getter(attr, &block)
           define_entity_attribute_setter(attr)
         end
       end

@@ -109,7 +109,7 @@ PLATFORMS
 
 DEPENDENCIES
   api_struct!
-  bundler
+  bundler (~> 2.4)
   byebug (~> 11.1)
   ffaker (~> 2.21)
   pry-byebug (~> 3.10)
