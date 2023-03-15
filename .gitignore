@@ -16,3 +16,4 @@ vendor/bundle
 .ruby-version
 project_files
 *.gem
+Gemfile.lock
