@@ -16,7 +16,6 @@ jobs:
     strategy:
       matrix:
         ruby-version:
-          - 2.6 # eol
           - 2.7
           - 3.0
           - 3.1
