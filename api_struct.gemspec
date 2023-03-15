@@ -3,14 +3,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'api_struct/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'api_struct'
+  spec.name          = 'uploadcare-api_struct'
   spec.version       = ApiStruct::VERSION
   spec.authors       = %w[bezrukavyi andy1341 kirillshevch]
   spec.email         = ['yaroslav.bezrukavyi@gmail.com', 'andrii.novikov1341@gmail.com', 'kirills167@gmail.com']
 
   spec.summary       = 'API wrapper builder with response serialization'
   spec.description   = spec.description
-  spec.homepage      = 'https://github.com/rubygarage/api_struct'
+  spec.homepage      = 'https://github.com/uploadcare/uploadcare-api_struct'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
