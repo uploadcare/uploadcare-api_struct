@@ -3,6 +3,7 @@ require 'api_struct'
 require 'vcr'
 require 'webmock/rspec'
 require 'ffaker'
+require 'byebug'
 
 Dir[File.expand_path('spec/support/**/*.rb')].each { |file| require file }
 

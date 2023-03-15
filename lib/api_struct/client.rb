@@ -4,10 +4,11 @@ module ApiStruct
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-    URL_OPTION_REGEXP = /\/:([a-z_]+)/.freeze
+    URL_OPTION_REGEXP = %r{/:([a-z_]+)}.freeze
 
     attr_reader :client
 
+    # rubocop:disable Style/MissingRespondToMissing
     def self.method_missing(method_name, *args, &block)
       endpoints = Settings.config.endpoints
       return super unless endpoints.keys.include?(method_name)
@@ -20,17 +21,16 @@ module ApiStruct
         endpoints[method_name][:headers]
       end
     end
+    # rubocop:enable Style/MissingRespondToMissing
 
     HTTP_METHODS = %i[get post patch put delete].freeze
 
     HTTP_METHODS.each do |http_method|
       define_method http_method do |*args, **options|
-        begin
-          options[:params] = default_params.merge(options[:params] || {})
-          wrap client.send(http_method, build_url(args, options), options)
-        rescue HTTP::ConnectionError => e
-          failure(body: e.message, status: :not_connected)
-        end
+        options[:params] = default_params.merge(options[:params] || {})
+        wrap client.send(http_method, build_url(args, options), options)
+      rescue HTTP::ConnectionError => e
+        failure(body: e.message, status: :not_connected)
       end
     end
 
@@ -49,12 +49,12 @@ module ApiStruct
     def success(response)
       body = response.body.to_s
       result = !body.empty? ? JSON.parse(body, symbolize_names: true) : nil
-      Dry::Monads::Success(result)
+      Dry::Monads::Result::Success.call(result)
     end
 
     def failure(response)
       result = ApiStruct::Errors::Client.new(response)
-      Dry::Monads::Failure(result)
+      Dry::Monads::Result::Failure.call(result)
     end
 
     def first_arg(args)
@@ -75,14 +75,14 @@ module ApiStruct
 
     def replace_optional_params(url, options)
       url.gsub(URL_OPTION_REGEXP) do
-        value = options.delete($1.to_sym)
+        value = options.delete(::Regexp.last_match(1).to_sym)
         value ? "/#{value}" : ''
       end
     end
 
     def api_settings_exist
       return if respond_to?(:api_root)
-      raise RuntimeError, "\nSet api configuration for #{self.class}."
+      raise "\nSet api configuration for #{self.class}."
     end
   end
 end

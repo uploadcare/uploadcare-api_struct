@@ -3,6 +3,7 @@ describe ApiStruct::Entity do
 
   stub_api('https://jsonplaceholder.typicode.com')
 
+  # rubocop:disable Lint/ConstantDefinitionInBlock
   class StubClient < ApiStruct::Client
     stub_api 'posts'
 
@@ -31,7 +32,8 @@ describe ApiStruct::Entity do
     has_entity :nested_entity, as: StubNestedEntity
     has_entities :another_nested_entities, as: StubNestedEntity
   end
-  
+  # rubocop:enable Lint/ConstantDefinitionInBlock
+
   let(:response) { { title: FFaker::Name.name, 'id' => rand(1..100), another_attributes: FFaker::Name.name } }
   let(:nested_response) { { name: FFaker::Name.name } }
 

@@ -17,20 +17,22 @@ module ApiStruct
         end
       end
 
-      def has_entities(attr, options)
+      def entities?(attr, options)
         entity_attributes << attr.to_sym
         define_method attr.to_s do
           self.class.collection(entity[attr], options[:as])
         end
       end
+      alias has_entities entities?
 
-      def has_entity(attr, options)
+      def entity?(attr, options)
         entity_attributes << attr.to_sym
         define_method attr.to_s do
           return unless entity[attr]
           self.class.convert_to_entity(entity[attr], options[:as])
         end
       end
+      alias has_entity entity?
 
       def collection(entities, entity_type = self)
         Collection.new(entities, entity_type)
@@ -58,12 +60,14 @@ module ApiStruct
 
     attr_reader :entity, :entity_status
 
+    # rubocop:disable Style/OptionalBooleanParameter
     def initialize(entity, entity_status = true)
       raise EntityError, "#{entity} must be Hash" unless entity.is_a?(Hash)
       @entity = Hashie::Mash.new(extract_attributes(entity))
       @entity_status = entity_status
       __setobj__(@entity)
     end
+    # rubocop:enable Style/OptionalBooleanParameter
 
     def success?
       entity_status == true

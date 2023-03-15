@@ -7,7 +7,7 @@ module ApiStruct
       end
 
       def from_success(value)
-        return Dry::Monads::Success(nil) if value.nil?
+        return Dry::Monads::Result::Success.call(nil) if value.nil?
 
         value.is_a?(Array) ? collection(value) : new(value)
       end

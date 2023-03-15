@@ -1,17 +1,23 @@
-# <img src='https://github.com/rubygarage/api_struct/blob/master/api_struct.svg' height='60' alt='ApiStruct' />
+# <img src='https://github.com/uploadcare/uploadcare-api_struct/blob/master/api_struct.svg' height='60' alt='ApiStruct' />
 
 **ApiStruct** consists of two main interfaces: `ApiStruct::Client` and `ApiStruct::Entity`. The `ApiStruct::Client` class is aimed at using the same interface for describing requests to different APIs. The `ApiStruct::Entity` enables you to use *ApiStruct* clients in ORM-like style.
 
-[![Gem Version](https://badge.fury.io/rb/api_struct.svg)](https://badge.fury.io/rb/api_struct)
+[![Gem Version](https://badge.fury.io/rb/uploadcare-api_struct.svg)](https://badge.fury.io/rb/uploadcare-api_struct)
 ![Maintainability](https://api.codeclimate.com/v1/badges/dc07c83ccbcaaebc6c44/maintainability)
-[![CircleCI](https://circleci.com/gh/rubygarage/api_struct/tree/master.svg?style=svg)](https://circleci.com/gh/rubygarage/api_struct/tree/master)
+[![Build Status][actions-img]][actions-badge]
+[![Coverage Status][coverals-img]][coverals]
+
+[actions-badge]: https://github.com/uploadcare/uploadcare-api_struct/actions/workflows/test.yml
+[actions-img]: https://github.com/uploadcare/uploadcare-api_struct/actions/workflows/test.yml/badge.svg
+[coverals-img]: https://coveralls.io/repos/github/uploadcare/uploadcare-api_struct/badge.svg?branch=master
+[coverals]: https://coveralls.io/github/uploadcare/uploadcare-api_struct?branch=master
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'api_struct'
+gem 'uploadcare-api_struct'
 ```
 
 And then execute:
@@ -20,7 +26,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install api_struct
+    $ gem install uploadcare-api_struct
 
 ## Usage
 
@@ -200,7 +206,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/rubygarage/api_struct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/uploadcare/uploadcare-api_struct.
 
 ## License
 
