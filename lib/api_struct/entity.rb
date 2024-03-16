@@ -28,7 +28,7 @@ module ApiStruct
       def entity?(attr, options)
         entity_attributes << attr.to_sym
         define_method attr.to_s do
-          return unless entity[attr]
+          return false unless entity[attr]
           self.class.convert_to_entity(entity[attr], options[:as])
         end
       end
