@@ -1,3 +1,10 @@
+# v1.2.0 2024-03-17
+
+## Changed
+
+* Drop support for ruby versions < 3.x.
+* Fix warnings from `Hashie::Mash` on commonly used size value on entities.
+
 # v1.0.1 2018-11-27
 
 ## Fixed
