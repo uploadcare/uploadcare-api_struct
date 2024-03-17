@@ -28,7 +28,7 @@ module ApiStruct
       def entity?(attr, options)
         entity_attributes << attr.to_sym
         define_method attr.to_s do
-          return unless entity[attr]
+          return false unless entity[attr]
           self.class.convert_to_entity(entity[attr], options[:as])
         end
       end
@@ -60,10 +60,14 @@ module ApiStruct
 
     attr_reader :entity, :entity_status
 
+    class EntityMash < Hashie::Mash
+      disable_warnings :size
+    end
+
     # rubocop:disable Style/OptionalBooleanParameter
     def initialize(entity, entity_status = true)
       raise EntityError, "#{entity} must be Hash" unless entity.is_a?(Hash)
-      @entity = Hashie::Mash.new(extract_attributes(entity))
+      @entity = EntityMash.new(extract_attributes(entity))
       @entity_status = entity_status
       __setobj__(@entity)
     end
